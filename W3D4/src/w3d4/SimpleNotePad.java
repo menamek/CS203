@@ -47,6 +47,8 @@ public class SimpleNotePad implements Serializable {
         this.save = new JButton("Save");
         this.load = new JButton("Load");
         text.enableInputMethods(true);
+        save.addActionListener(new Save());
+        load.addActionListener(new Load());
         p1.add(save);
         p1.add(load);
         outer.add(text);
