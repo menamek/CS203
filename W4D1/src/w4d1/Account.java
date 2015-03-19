@@ -5,65 +5,66 @@
  */
 package w4d1;
 
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  *
  * @author mena
  */
-public class Account {
+public abstract class Account implements Serializable {
 
-    private int accountType;
-    private String name;
-    private Double balance;
-    private int openDate;
-    private int closeDate;
+    private double curBalance;
+    private double interestRate;
+    private String customerName;
+    private Date openDate;
+    private String accountType;
 
-    public int getAccountType() {
+    public String getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(int accountType) {
+    public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-    public int getOpenDate() {
+    public Date GetDate(){
         return openDate;
     }
-
-    public void setOpenDate(int openDate) {
-        this.openDate = openDate;
+    public String getCurrentDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+    public void openDate(Date date) {
+        this.openDate = date;
     }
 
-    public int getCloseDate() {
-        return closeDate;
+    public Double getCurBalance() {
+        return curBalance;
     }
 
-    public void setCloseDate(int closeDate) {
-        this.closeDate = closeDate;
+    public void deposit(double amount) {
+        this.curBalance+= amount;
     }
- 
-    public void creat(){
+
+    public void withdraw(double amount) {
         
+       this.curBalance -= amount;
     }
-    public void debit(){
-        
+
+    public void setCustomer(String anr) {
+        this.customerName = anr;
     }
-    public void credit(){
-        
+
+    public String getCustomer() {
+        return customerName;
     }
+     
+    
 }

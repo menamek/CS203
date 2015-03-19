@@ -5,25 +5,21 @@
  */
 package w4d1;
 
+import com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author mena
  */
-public class SavingAccount extends Account implements interestCalculate{
+public class SavingAccount extends Account implements interestRate {
 
-    private double interstRate;
-
-    public double getInterstRate() {
-        return interstRate;
-    }
-
-    public void setInterstRate(double interstRate) {
-        this.interstRate = interstRate;
-    }
+    private double interestRate = 0.07;
 
     @Override
-    public double calculateInterstRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addInterest() {
+        super.deposit(super.getCurBalance() * interestRate);
     }
-
 }

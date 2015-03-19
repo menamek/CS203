@@ -5,25 +5,21 @@
  */
 package w4d1;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+
 /**
  *
  * @author mena
  */
-public class ChekingAccount extends Account implements interestCalculate {
-
-    private double interestRate;
-
-    public double getInterestRate() {
-        return interestRate;
-    }
-
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
-    }
+public class ChekingAccount extends Account implements interestRate{
+    private double interestRate=0.01;
 
     @Override
-    public double calculateInterstRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addInterest() {
+        super.deposit(super.getCurBalance() * interestRate);
     }
 
 }
